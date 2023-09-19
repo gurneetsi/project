@@ -77,6 +77,39 @@ document.addEventListener("DOMContentLoaded", function () {
             },
         });
     }
+    // Function to create and display the price table
+function createPriceTable(priceData, targetElement) {
+    const priceTableBody = targetElement.querySelector(".price-table-body");
+    // Clear the table before adding new data
+    priceTableBody.innerHTML = "";
+
+    // Sort the price data in descending order by date
+    priceData.sort((a, b) => b[0] - a[0]);
+
+    for (let i = 0; i < priceData.length; i++) {
+        const entry = priceData[i];
+        const date = new Date(entry[0]).toLocaleDateString();
+        const price = entry[1];
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${date}</td>
+            <td>$${price.toFixed(2)}</td>
+        `;
+
+        // Apply Bootstrap table classes
+        row.classList.add("table-hover"); 
+
+        priceTableBody.appendChild(row);
+    }
+}
+
+
+
+
+
+
+    
 
     // Function to handle cryptocurrency search
     function handleCryptoSearch() {
@@ -110,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <p class="card-text">Price in USD: $${priceInUSD.toFixed(2)}</p>
                                 <canvas class="price-line-chart" width="400" height="200"></canvas>
                                 <h6 class="mt-3">Price Data Table</h6>
-                                <table class="table table-bordered mt-2">
+                                <table class="table table-bordered table-dark table-striped table-hover mt-2">
                                     <thead>
                                         <tr>
                                             <th>Day</th>
