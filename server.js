@@ -1,11 +1,21 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const ejs = require('ejs');
+const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Set EJS as the view engine
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views')); // Set the views directory
+
+
+// Replace 'your-database-name' with your actual MongoDB database name
+const dbConnection = 'mongodb+srv://s220007878:admin@cluster0.rp8miqw.mongodb.net/?retryWrites=true&w=majority';
+
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost/your-database-name', {
+mongoose.connect(dbConnection, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -14,7 +24,11 @@ mongoose.connect('mongodb://localhost/your-database-name', {
 
 // Define a MongoDB schema and model
 const querySchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  phone: String,
   query: String
+
 });
 
 const Query = mongoose.model('Query', querySchema);
@@ -36,10 +50,13 @@ app.get('/', (req, res) => {
 // Handle form submission
 app.post('/submit', async (req, res) => {
   try {
-    const { query } = req.body;
+    const { name, email, phone, query } = req.body;
 
     // Create a new query document
     const newQuery = new Query({
+      name,
+      email,
+      phone,
       query
     });
 
@@ -50,6 +67,34 @@ app.post('/submit', async (req, res) => {
   } catch (error) {
     console.error('Error submitting query:', error);
     res.status(500).send('Error submitting query.');
+  }
+});
+
+// Define a route to render the Dashboard page
+app.get('/dashboard', async (req, res) => {
+  try {
+    const queries = await Query.find().exec();
+
+    // Render the dashboard.ejs view with the retrieved data
+    res.render('dashboard', { queries });
+  } catch (error) {
+    console.error('Error fetching queries:', error);
+    res.status(500).send('Error fetching queries.');
+  }
+});
+
+// Add this route to handle delete requests
+app.post('/delete/:id', async (req, res) => {
+  try {
+    const queryId = req.params.id;
+
+    // Find and remove the query by its ID
+    await Query.findByIdAndRemove(queryId);
+
+    res.redirect('/dashboard'); // Redirect back to the dashboard
+  } catch (error) {
+    console.error('Error deleting query:', error);
+    res.status(500).send('Error deleting query.');
   }
 });
 
