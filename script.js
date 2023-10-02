@@ -1,8 +1,6 @@
-const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+const proxyUrl = "https://cors-anywhere.herokuapp.com";
 const apiUrl = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false";
 const apiUrlWithProxy = proxyUrl + apiUrl;
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
     // Elements for the search section
@@ -25,8 +23,11 @@ document.addEventListener("DOMContentLoaded", function () {
         // Clear the table before adding new data
         priceTableBody.innerHTML = "";
 
-        for (let i = 0; i < priceData.length; i++) {
-            const entry = priceData[i];
+        // Limit the priceData to the first 10 entries
+        const limitedPriceData = priceData.slice(0, 10);
+
+        for (let i = 0; i < limitedPriceData.length; i++) {
+            const entry = limitedPriceData[i];
             const date = new Date(entry[0]).toLocaleDateString();
             const price = entry[1];
 
@@ -91,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to create and display the list of cryptocurrencies
     function createCryptoList(cryptoList) {
         cryptoTableBody.innerHTML = ""; // Clear the table before adding new data
-    
+
         for (let i = 0; i < cryptoList.length; i++) {
             const crypto = cryptoList[i];
             const name = crypto.name;
@@ -99,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const priceInUSD = crypto.current_price;
             const sevenDayPrediction = generate7DayPrediction(); // Generate a 7-day prediction
             const oneMonthPrediction = generate1MonthPrediction(); // Generate a 1-month prediction
-    
+
             const row = document.createElement("tr");
             row.innerHTML = `
                 <td>${name}</td>
@@ -108,50 +109,43 @@ document.addEventListener("DOMContentLoaded", function () {
                 <td>${sevenDayPrediction}%</td>
                 <td>${oneMonthPrediction}%</td>
             `;
-    
+
             cryptoTableBody.appendChild(row);
         }
     }
-    
-
 
     // Function to generate a random prediction for a cryptocurrency's 7-day price change
-function generate7DayPrediction() {
-    const randomChange = (Math.random() - 0.5) * 10; // Generate a random change between -5 and 5
-    return randomChange.toFixed(2);
-}
+    function generate7DayPrediction() {
+        const randomChange = (Math.random() - 0.5) * 10; // Generate a random change between -5 and 5
+        return randomChange.toFixed(2);
+    }
 
-// Function to generate a random prediction for a cryptocurrency's 1-month price change
-function generate1MonthPrediction() {
-    const randomChange = (Math.random() - 0.5) * 50; // Generate a random change between -25 and 25
-    return randomChange.toFixed(2);
-}
-
-
+    // Function to generate a random prediction for a cryptocurrency's 1-month price change
+    function generate1MonthPrediction() {
+        const randomChange = (Math.random() - 0.5) * 50; // Generate a random change between -25 and 25
+        return randomChange.toFixed(2);
+    }
 
     // Function to fetch data using the CORS proxy
-function fetchDataWithProxy(url, targetElement) {
-    const apiUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false';
+    function fetchDataWithProxy(url, targetElement) {
+        const apiUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false';
 
-    fetch(apiUrlWithProxy)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        // Handle the response data here
-        // You can update the DOM with the cryptocurrency data
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        cryptoTableBody.innerHTML = 'An error occurred while fetching cryptocurrency data.';
-    });
-}
-
-
-
+        fetch(apiUrlWithProxy)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Handle the response data here
+            // You can update the DOM with the cryptocurrency data
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            cryptoTableBody.innerHTML = 'An error occurred while fetching cryptocurrency data.';
+        });
+    }
 
     // Function to fetch and display the list of cryptocurrencies on page load
     function fetchAndDisplayCryptoList() {
@@ -172,12 +166,8 @@ function fetchDataWithProxy(url, targetElement) {
                 cryptoTableBody.innerHTML = 'An error occurred while fetching cryptocurrency data.';
             });
     }
-    
 
-fetchAndDisplayCryptoList();
-
-
-
+    fetchAndDisplayCryptoList();
 
     // Function to handle cryptocurrency search
     function handleCryptoSearch() {
@@ -205,13 +195,13 @@ fetchAndDisplayCryptoList();
                     // Create the card structure with the chart and price table
                     cryptoResult.innerHTML = `
                         <div class="card">
-                            <img src="${logoURL}" alt="${name} Logo" class="card-img-top crypto-logo-small">
+                           <img src="${logoURL}" alt="${name} Logo" class="card-img-top crypto-logo-small">
                             <div class="card-body">
                                 <h5 class="card-title">${name} (${symbol})</h5>
                                 <p class="card-text">Price in USD: $${priceInUSD.toFixed(2)}</p>
                                 <canvas class="price-line-chart" width="400" height="200"></canvas>
-                                <h6 class="mt-3">Price Data Table</h6>
-                                <table class="table table-bordered table-dark table-striped table-hover mt-2">
+                                <h4 class="mt-3, text-dark"">Price Data Table</h4>
+                                <table class="table table-bordered table-light table-striped table-hover mt-2">
                                     <thead>
                                         <tr>
                                             <th>Day</th>
@@ -222,7 +212,9 @@ fetchAndDisplayCryptoList();
                                         <!-- Price data will be displayed here -->
                                     </tbody>
                                 </table>
+                               
                             </div>
+                            
                         </div>
                     `;
 
@@ -342,5 +334,4 @@ fetchAndDisplayCryptoList();
     predictionButton.addEventListener("click", handleCryptoPrediction);
 
     // Fetch and display the list of cryptocurrencies on page load
-    
 });
