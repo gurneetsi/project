@@ -1,5 +1,12 @@
+const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+const apiUrl = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false";
+const apiUrlWithProxy = proxyUrl + apiUrl;
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     // Elements for the search section
+    const cryptoTableBody = document.querySelector(".crypto-table-body");
     const searchButton = document.getElementById("search-button");
     const cryptoInput = document.getElementById("crypto-input");
     const cryptoResult = document.getElementById("crypto-result");
@@ -8,6 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const predictionButton = document.getElementById("prediction-button");
     const cryptoInputPrediction = document.getElementById("crypto-input-prediction");
     const cryptoPredictionResult = document.getElementById("crypto-prediction-result");
+
+    // Elements for the crypto table
+    const cryptoTable = document.getElementById("crypto-table");
 
     // Function to create and display the price table
     function createPriceTable(priceData, targetElement) {
@@ -77,39 +87,97 @@ document.addEventListener("DOMContentLoaded", function () {
             },
         });
     }
-    // Function to create and display the price table
-function createPriceTable(priceData, targetElement) {
-    const priceTableBody = targetElement.querySelector(".price-table-body");
-    // Clear the table before adding new data
-    priceTableBody.innerHTML = "";
 
-    // Sort the price data in descending order by date
-    priceData.sort((a, b) => b[0] - a[0]);
-
-    for (let i = 0; i < priceData.length; i++) {
-        const entry = priceData[i];
-        const date = new Date(entry[0]).toLocaleDateString();
-        const price = entry[1];
-
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${date}</td>
-            <td>$${price.toFixed(2)}</td>
-        `;
-
-        // Apply Bootstrap table classes
-        row.classList.add("table-hover"); 
-
-        priceTableBody.appendChild(row);
+    // Function to create and display the list of cryptocurrencies
+    function createCryptoList(cryptoList) {
+        cryptoTableBody.innerHTML = ""; // Clear the table before adding new data
+    
+        for (let i = 0; i < cryptoList.length; i++) {
+            const crypto = cryptoList[i];
+            const name = crypto.name;
+            const symbol = crypto.symbol.toUpperCase();
+            const priceInUSD = crypto.current_price;
+            const sevenDayPrediction = generate7DayPrediction(); // Generate a 7-day prediction
+            const oneMonthPrediction = generate1MonthPrediction(); // Generate a 1-month prediction
+    
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${name}</td>
+                <td>${symbol}</td>
+                <td>$${priceInUSD.toFixed(2)}</td>
+                <td>${sevenDayPrediction}%</td>
+                <td>${oneMonthPrediction}%</td>
+            `;
+    
+            cryptoTableBody.appendChild(row);
+        }
     }
+    
+
+
+    // Function to generate a random prediction for a cryptocurrency's 7-day price change
+function generate7DayPrediction() {
+    const randomChange = (Math.random() - 0.5) * 10; // Generate a random change between -5 and 5
+    return randomChange.toFixed(2);
+}
+
+// Function to generate a random prediction for a cryptocurrency's 1-month price change
+function generate1MonthPrediction() {
+    const randomChange = (Math.random() - 0.5) * 50; // Generate a random change between -25 and 25
+    return randomChange.toFixed(2);
+}
+
+
+
+    // Function to fetch data using the CORS proxy
+function fetchDataWithProxy(url, targetElement) {
+    const apiUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false';
+
+    fetch(apiUrlWithProxy)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Handle the response data here
+        // You can update the DOM with the cryptocurrency data
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        cryptoTableBody.innerHTML = 'An error occurred while fetching cryptocurrency data.';
+    });
 }
 
 
 
 
-
-
+    // Function to fetch and display the list of cryptocurrencies on page load
+    function fetchAndDisplayCryptoList() {
+        // Change the 'per_page' parameter to specify the number of cryptocurrencies to fetch
+        fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&sparkline=false")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Display the list of cryptocurrencies
+                createCryptoList(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                cryptoTableBody.innerHTML = 'An error occurred while fetching cryptocurrency data.';
+            });
+    }
     
+
+fetchAndDisplayCryptoList();
+
+
+
 
     // Function to handle cryptocurrency search
     function handleCryptoSearch() {
@@ -272,4 +340,7 @@ function createPriceTable(priceData, targetElement) {
     // Event listeners for search and prediction buttons
     searchButton.addEventListener("click", handleCryptoSearch);
     predictionButton.addEventListener("click", handleCryptoPrediction);
+
+    // Fetch and display the list of cryptocurrencies on page load
+    
 });

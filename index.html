@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body >
+<body>
     <header>
         <!-- Bootstrap Navigation Bar with Color -->
         <nav class="navbar navbar-expand-lg navbar-light bg-info">
-            <a class="navbar-brand text-white" href="#">Crypto Analyzer</a>
+            <a class="navbar-brand text-white" href="#"><img src="/images/crypto.png" class="logo" alt="Crypto Analyzer Logo" class="logo">Crypto Analyzer</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -42,23 +42,46 @@
             </div>
         </nav>
     </header>
-    <main >
+    <main>
         <section id="crypto-search" class="container mt-5">
-            <h2 class="text-primary">Search for Cryptocurrency</h2>
             <div class="row">
                 <div class="col-md-6">
+                    <h2 class="text-primary">Search for Cryptocurrency</h2>
                     <div class="input-group">
                         <input type="text" id="crypto-input" class="form-control" placeholder="Enter cryptocurrency name or symbol">
                         <div class="input-group-append">
                             <button id="search-button" class="btn btn-primary" type="button">Search</button>
                         </div>
                     </div>
+                    <div id="crypto-result" class="mt-4">
+                        <!-- Cryptocurrency search result will be displayed here -->
+                    </div>
                 </div>
             </div>
-            <div id="crypto-result"  class="mt-4 ">
+        </section>
+
+        <section id="crypto-list" class="container mt-5">
+            <div class="row">
+                <div class="col">
+                    <h2 class="text-primary">Top 20 Cryptocurrencies</h2>
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Symbol</th>
+                                <th>Price (USD)</th>
+                                <th>7-Day Prediction</th>
+                                <th>1-Month Prediction</th>
+                            </tr>
+                        </thead>
+                        <tbody class="crypto-table-body">
+                            <!-- Cryptocurrency data will be displayed here -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
-        
+
         
     </main>
     <footer class="bg-dark text-white text-center py-3">
@@ -68,6 +91,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- Include the same script.js file for both search and prediction -->
     <script src="script.js"></script>
 </body>
