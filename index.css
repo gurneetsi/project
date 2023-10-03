@@ -1,0 +1,35 @@
+/* Carousel left/Right arrow position setting */
+.carousel-control-next {
+    right: -5%;
+}
+.carousel-control-prev {
+    left: -5%;
+}
+
+/* set crypto search to center */
+#crypto-search {
+    text-align: center !important;
+}
+
+.input-group {
+    display: inline-flex !important;
+}
+
+
+/* Card Result */
+.card {
+    display: inherit !important;
+}
+
+/* Result img */
+.crypto-logo-small {
+    max-width: 100px;
+    height: auto;
+    margin-top: 2%;
+}
+
+/* Price Line Chart */
+.price-line-chart {
+    height: auto !important;
+    width: 520px !important;
+}

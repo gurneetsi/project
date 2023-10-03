@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crypto Analyzer</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!--  Bootstrap CSS link -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <header>
-        <!-- Bootstrap Navigation Bar with Color -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-info">
-            <a class="navbar-brand text-white" href="#">Crypto Analyzer</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <header class="bg-dark py-3">
+        <nav class="navbar navbar-expand-lg navbar-light bg-info navbar bg-dark">
+            <a class="navbar-brand text-white" href="index.html"><img src="images/crypto.png" class="logo">Crypto
+                Analyzer</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">Home</a>
+                        <a class="nav-link text-white" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="About.html">About</a>
+                        <a class="nav-link text-white" href="Predict.html">Predict</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="about.html">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="Contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="News.html">News</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="Login.html">Login</a>
@@ -36,49 +43,119 @@
             </div>
         </nav>
     </header>
-    <main>
-        <section id="crypto-search" class="container mt-5">
-            <h2 class="text-primary">Search for Cryptocurrency</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="input-group">
-                        <input type="text" id="crypto-input" class="form-control" placeholder="Enter cryptocurrency name or symbol">
-                        <div class="input-group-append">
-                            <button id="search-button" class="btn btn-primary" type="button">Search</button>
+    <main >
+        <section id="crypto-carousel" class="bg-dark p-4 rounded" >
+            <div class="container-fluid ">
+                <h2 class="text-light">Featured Cryptocurrencies</h2>
+                <div id="cryptoCarousel" class="carousel slide" data-ride="carousel"
+                     >
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="images/crypto1.png" class="d-block w-100" style="height: 500px; width:1400px"alt="Cryptocurrency 1">
                         </div>
+                        <div class="carousel-item">
+                            <img src="images/crypto2.png" class="d-block w-100" style="height: 500px; width:1500px" alt="Cryptocurrency 2">
+                        </div>
+                        <!-- Add more carousel items as needed -->
                     </div>
+                    <a class="carousel-control-prev" href="#cryptoCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#cryptoCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
-            </div>
-            <div id="crypto-result" class="mt-4">
-                <!-- Crypto search results will be displayed here -->
             </div>
         </section>
-        
-        <section id="crypto-prediction" class="container mt-5">
-            <h2 class="text-primary">Cryptocurrency Price Prediction</h2>
+
+        <section id="crypto-search" class="mt-5 bg-light rounded">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="input-group">
-                        <input type="text" id="crypto-input-prediction" class="form-control" placeholder="Enter cryptocurrency name or symbol for prediction">
-                        <div class="input-group-append">
-                            <button id="prediction-button" class="btn btn-primary" type="button">Predict</button>
+                <div class="col-lg-12" style="padding: 100px 0;">
+                    <h2>Search for Cryptocurrency</h2>
+                    <br>
+                    <div class="input-group" style="width: 550px; margin-top: 12px;">
+                        <input type="text" id="crypto-input" class="form-control"
+                            placeholder="Enter cryptocurrency name or symbol"> 
+                        <div class="input-group-append" style="margin-left: 10px;">  
+                            <button id="search-button" class="btn btn-success" type="button">Search</button>
                         </div>
+                    </div>
+                    <div id="crypto-result" class="mt-4">
+                        <!-- Cryptocurrency search result will be displayed here -->
                     </div>
                 </div>
             </div>
-            <div id="crypto-prediction-result" class="mt-4">
-                <!-- Cryptocurrency price prediction will be displayed here -->
+        </section>
+
+<!-- Cards Section -->
+<section class="row bg-dark" style="width: 100%; margin-top: 3%;">
+    <div class="col-md-4 d-flex align-items-center justify-content-center" style="height: 50%;">
+        <div class="card custom-card border-0 "style="width: 350PX;">
+            <img src="Images/card1.jpg" class="card-img-top" style="height: 400px ;"alt="Card Image">
+            <div class="card-body"style="height: 50%;">
+                <h5 class="card-title">Future</h5>
+                <p class="card-text">Crypto is future!</p>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 d-flex align-items-center justify-content-center">
+        <div class="card custom-card border-0" style="width: 350PX;">
+            <img src="Images/card2.jpg" class="card-img-top"style="height: 400px;width: 350PX;"alt="Card Image">
+            <div class="card-body">
+                <h5 class="card-title">RICH</h5>
+                <p class="card-text">Let's become RICH!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 d-flex align-items-center justify-content-center">
+        <div class="card custom-card border-0"style=" width: 350PX;">
+            <img src="Images/card3.jpg" class="card-img " style="height: 400px; width: 350PX; align-content: center;"alt="Card Image">
+            <div class="card-body">
+                <h5 class="card-title">SUCESS</h5>
+                <p class="card-text">Hardwork is key to sucess!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        <section id="crypto-list" class="mt-5 bg-dark p-4 rounded">
+            <div class="row">
+                <div class="col">
+                    <h2 class="text-light">Top 20 Cryptocurrencies</h2>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped ">
+                            <thead class="thead-light ">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Symbol</th>
+                                    <th>Price (USD)</th>
+                                    <th>7-Day Prediction</th>
+                                    <th>1-Month Prediction</th>
+                                </tr>
+                            </thead>
+                            <tbody class="crypto-table-body text-light">
+                                <!-- Cryptocurrency data will be displayed here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-    <footer class="bg-dark text-white text-center py-3">
+    <footer class="bg-dark text-white text-center py-3 mt-4">
         &copy; 2023 Crypto Analyzer. All rights reserved.
     </footer>
-    <!-- Add Bootstrap JS and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Include the same script.js file for both search and prediction -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

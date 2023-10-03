@@ -8,9 +8,41 @@
 
 /* Contact form */
 #contact-form {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 5px;
+    background-color: #fff;
+	border-top-right-radius:20px;
+	border-bottom-right-radius:20px;
+	border-top:1px solid #ccc;
+	border-right:1px solid #ccc;
+    padding: 0 !important;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .4);
+}
+#contactForm {
+    padding: 25px !important;
+}
+
+/* Form Input Settings */
+.form-group input {
+    margin: 35px 0;
+}
+.form-group textarea {
+    border: 1px solid grey;
+    margin: auto;
+}
+.form-control {
+    width: 100%;
+    border: 0px solid transparent;
+    border-radius: 0;
+    border-bottom: 1px solid #aaa;
+    padding: 1em .5em .5em;
+    outline: none;
+    margin: 1.5em auto;
+    transition: all .5s ease;
+}
+
+.form-control:focus {
+    border-bottom-color: #343a40 !important;
+    box-shadow: 0 0 5px rgba(0, 80, 80, .4);
+    border-radius: 4px;
 }
 
 /* Address section */
@@ -18,17 +50,42 @@
     margin-top: 30px;
 }
 
-/* Footer */
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
+.addr_box {
+    padding: 25px;
+    justify-content: center !important;
+    background-color: #343a40;
 }
-
 
 #success-message {
     position: fixed;
     top: 20px;
     right: 20px;
     z-index: 1000;
+}
+
+/* SUBMIT BTN */
+.btn {
+    transition: all .5s ease;
+    width: 35%;
+    border-radius: 30px;
+    color: #343a40 !important;
+    font-weight: 600;
+    background-color: #36d85c;
+    border: 1px solid #343a40 !important;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+.btn:hover,
+.btn:focus {
+    color: white !important;
+    background-color: #28a745;
+    border-color: #28a745 !important;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
 }

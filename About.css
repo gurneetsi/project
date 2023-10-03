@@ -2,6 +2,7 @@
 body, h1, h2, p {
     margin: 0;
     padding: 0;
+    color: black;
 }
 
 /* Basic styles */
@@ -9,35 +10,80 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
     color: #333;
+    display: inherit;
 }
 
-header {
-    background-color: #007BFF;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
+.row {
+    margin: 20px 0;
 }
 
+/* FONT SETTING */
 h1 {
     font-size: 28px;
 }
-
-section {
-    background-color: #fff;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
-
 h2 {
     font-size: 24px;
     margin-bottom: 10px;
 }
-
 p {
     font-size: 16px;
     line-height: 1.5;
+    margin-bottom: 50px;
+}
+
+/* Header Setup */
+header {
+    background-color: #333;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header .navbar-brand {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+header .navbar-toggler-icon {
+    background-color: #fff;
+}
+
+header .navbar-nav .nav-link {
+    font-size: 18px;
+    color: #fff;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+header .navbar-nav .nav-link:hover {
+    color: #f8f9fa;
+}
+
+header {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-nav li.nav-item a.nav-link:hover {
+    background-color: #555;
+    border-radius: 4px;
+}
+
+section {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* About Us img */
+#ab_us {
+    max-width: 700px;
+    height: auto;
+    box-shadow: 6px 6px 10px 4px rgba(0, 0, 0, 0.5)
+}
+
+#mission {
+    margin-top: 12px !important;
 }
 
 .team-member {
@@ -70,3 +116,38 @@ p {
     margin-top: 5px;
 }
 
+/* Additional styles from the original code */
+.crypto-logo-small {
+    max-width: 100px;
+    height: auto;
+}
+
+.logo {
+    max-width: 50px;
+    height: auto;
+}
+
+/* Add hover effect to custom cards */
+.custom-card:hover {
+    transform: scale(1.05); /* Increase the size on hover */
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a subtle box shadow on hover */
+}
+
+/* Set card margin */
+.custom-card {
+    margin: 1rem; 
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the card title and text */
+.custom-card .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.custom-card .card-text {
+    font-size: 1rem;
+    color: black;
+    margin: 0.55rem 0; 
+}

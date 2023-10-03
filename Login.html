@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,17 @@
     <!-- Bootstrap CSS link -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="Login.css">
+
 </head>
+
 <body>
     <header>
         <!-- Bootstrap Navigation Bar with Color -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-info">
-            <a class="navbar-brand text-white" href="#">Crypto Analyzer</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-info navbar bg-dark">
+            <a class="navbar-brand text-white" href="index.html"><img src="images/crypto.png" class="logo">Crypto
+                Analyzer</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -22,10 +27,16 @@
                         <a class="nav-link text-white" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link text-white" href="Predict.html">Predict</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link text-white" href="about.html">About</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="Contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="News.html">News</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="Login.html">Login</a>
@@ -34,39 +45,48 @@
             </div>
         </nav>
     </header>
+
     <main class="d-flex align-items-center">
         <!-- Login Form -->
-        <section id="login-form" class="container mt-5">
-            <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <h2 class="text-primary">Login</h2>
-                    <form id="login-form">
-                        <div class="form-group">
-                            <label for="user">User</label>
-                            <input type="text" class="form-control" id="user" placeholder="Enter your username" required>
+        <div class="container-fluid">
+            <div class="row logo-content">
+                <div class="col-md-4 text-center company__info">
+                    <span class="company__logo">
+                        <img src="images/crypto.png" class="sub_logo">
+                    </span><br>
+                    <h4 class="company_title">Crypto Analyzer</h4>
+                </div>
+                <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <h2>Login</h2>
                         </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
-                    <div id="error-message" class="text-danger"></div>
-                    <div class="form-group">
-                        <a href="#" class="text-primary" data-toggle="modal" data-target="#forgotPasswordModal">Forgot Password?</a>
+                        <form control="" class="form-group">
+                            <input type="text" name="username" id="username" class="form-control"
+                                placeholder="Username">
+
+                            <input type="password" name="password" id="password" class="form-control"
+                                placeholder="Password">
+
+                            <input type="submit" value="Submit" class="btn btn-success">
+
+                            <a href="#" class="text-primary" data-toggle="modal"
+                                data-target="#forgotPasswordModal">Forgot
+                                Password?</a>
+                        </form>
+                        <div id="error-message" class="text-danger"></div>
                     </div>
                 </div>
             </div>
-        </section>
+            </div>
     </main>
     <footer class="bg-dark text-white text-center py-3">
         &copy; 2023 Crypto Analyzer. All rights reserved.
     </footer>
 
     <!-- Forgot Password Modal -->
-    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" role="dialog" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" role="dialog"
+        aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -76,7 +96,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Please contact: <a href="mailto:deakinadmin@deakin.edu.au">deakinadmin@deakin.edu.au</a> for password related Queries.
+                    Please contact: <a href="mailto:deakinadmin@deakin.edu.au">deakinadmin@deakin.edu.au</a> for
+                    password related Queries.
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -90,6 +111,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="Login.js"></script>
-    
+
 </body>
+
 </html>

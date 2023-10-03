@@ -3,33 +3,21 @@
   "version": "1.0.0",
   "main": "access-coinapi-data.js",
   "scripts": {
-    "test": "mocha --reporter spec",
-    "start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-<<<<<<< HEAD
-    "chai": "^4.3.8",
-    "express": "^4.18.2",
-    "mocha": "^10.2.0",
-    "mongoose": "^7.5.1",
-    "request": "^2.88.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gurneetsi/project.git"
-  },
-  "bugs": {
-    "url": "https://github.com/gurneetsi/project/issues"
-  },
-  "homepage": "https://github.com/gurneetsi/project#readme"
-=======
+    "body-parser": "^1.20.2",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "mongodb": "^6.1.0",
-    "mongoose": "^7.5.1"
+    "mongoose": "^7.5.3",
+    "node": "^20.6.0",
+    "nodemailer": "^6.9.5",
+    "nodemon": "^3.0.1",
+    "proxy-from-env": "^1.1.0"
   }
->>>>>>> main
 }

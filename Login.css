@@ -1,0 +1,155 @@
+/* Reset some default styles */
+body,
+h1,
+h2,
+p {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+/* Basic styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* LOGO */
+/* Additional styles from the original code */
+.crypto-logo-small {
+    max-width: 100px;
+    height: auto;
+}
+
+.logo {
+    max-width: 50px;
+    height: auto;
+}
+
+
+/* HEADER SECTION */
+header {
+    background-color: #343a40;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header .navbar-brand {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+header .navbar-toggler-icon {
+    background-color: #fff;
+}
+
+header .navbar-nav .nav-link {
+    font-size: 18px;
+    color: #fff;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+header .navbar-nav .nav-link:hover {
+    color: #f8f9fa;
+}
+
+header {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-nav li.nav-item a.nav-link:hover {
+    background-color: #555;
+    border-radius: 4px;
+}
+
+/* LOGO CONTAINER BOX */
+.logo-content {
+    width: 50%;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .4);
+    margin: 5em auto;
+    display: flex;
+}
+
+.sub_logo {
+    max-width: 80px;
+}
+
+.company__info {
+    background-color: #343a40 !important;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+}
+
+/* LOGIN FORM CONTAINER BOX */
+.row>h2 {
+    color: Black;
+    margin: auto !important;
+    margin-top: 0.7em !important;
+}
+
+.login_form {
+    background-color: #fff;
+	border-top-right-radius:20px;
+	border-bottom-right-radius:20px;
+	border-top:1px solid #ccc;
+	border-right:1px solid #ccc;
+}
+
+form {
+    padding: 0 2em;
+}
+
+.form-group label {
+    color: black;
+}
+.form-group a {
+    margin: auto !important;
+}
+
+.form-control {
+    width: 100%;
+    border: 0px solid transparent;
+    border-radius: 0;
+    border-bottom: 1px solid #aaa;
+    padding: 1em .5em .5em;
+    padding-left: 2em;
+    outline: none;
+    margin: 1.5em auto;
+    transition: all .5s ease;
+}
+
+.form-control:focus {
+    border-bottom-color: #343a40 !important;
+    box-shadow: 0 0 5px rgba(0, 80, 80, .4);
+    border-radius: 4px;
+}
+
+.btn {
+    transition: all .5s ease;
+    width: 100%;
+    border-radius: 30px;
+    color: #343a40 !important;
+    font-weight: 600;
+    background-color: #fff;
+    border: 1px solid #343a40 !important;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+.btn:hover,
+.btn:focus {
+    color: white !important;
+    background-color: #28a745;
+    border-color: #28a745 !important;
+}
+
+
