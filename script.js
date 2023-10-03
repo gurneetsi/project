@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <p class="card-text">Price in USD: $${priceInUSD.toFixed(2)}</p>
                                 <canvas class="price-line-chart" width="400" height="200"></canvas>
                                 <h4 class="mt-3, text-dark"">Price Data Table</h4>
-                                <table class="table table-bordered table-light table-striped table-hover mt-2">
+                                <table class="table table-bordered table-dark table-striped table-hover mt-2">
                                     <thead>
                                         <tr>
                                             <th>Day</th>

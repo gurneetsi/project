@@ -47,14 +47,14 @@
     </header>
     <main>
         <!-- Contact Form and Address Section using Bootstrap Grid -->
-        <section id="contact-form" class="container mt-5">
+        <section id="contact-form" class="container mt-5 bg-dark text-light" >
             <div class="row">
                 <!-- Contact Form -->
                 <div class="col-md-6">
-                    <h2 class="text-primary">Contact Us</h2>
+                    <h2 class="text-light">Contact Us</h2>
                     <form id="contactForm" action="/submit" method="POST" onsubmit="return handleFormSubmission()">
                         <div class="form-group">
-                            <label for="name">Name</label>
+                            <label for="name" >Name</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name"
                                 required>
                         </div>
@@ -78,7 +78,7 @@
                 </div>
                 <!-- Address Section -->
                 <div class="col-md-6">
-                    <h2 class="text-primary">Our Address</h2>
+                    <h2 class="text-light">Our Address</h2>
                     <p>Deakin University, Burwood Campus<br>Melbourne, Victoria, Australia</p>
                     <div class="embed-responsive embed-responsive-16by9">
                         <iframe
