@@ -1,4 +1,4 @@
-<!-- views/dashboard.ejs -->
+views/dashboard.ejs
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,6 +50,7 @@
                             <td><%= query.phone %></td>
                             <td><%= query.query %></td>
                             <td>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#emailModal" data-email="<%= query.email %>">Respond</button>
                                 <form action="/delete/<%= query._id %>" method="post" onsubmit="return confirm('Are you sure you want to delete this query?');">
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
@@ -66,5 +67,93 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+    <!-- Modal for Composing and Sending Emails -->
+    <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="emailModalLabel">Compose Email</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/send-email" method="post">
+                        <div class="form-group">
+                            <label for="recipient">Recipient:</label>
+                            <input type="email" class="form-control" id="recipient" name="recipient" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject:</label>
+                            <input type="text" class="form-control" id="subject" name="subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea class="form-control" id="message" name="message" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Email</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script>
+        $(document).ready(function () {
+            $('button[data-toggle="modal"]').click(function () {
+                var email = $(this).data('email');
+                $('#recipient').val(email); // Set the recipient field value
+            });
+        });
+    </script> -->
+
+    <script>
+        $(document).ready(function () {
+            $('button[data-toggle="modal"]').click(function () {
+                var email = $(this).data('email');
+                $('#recipient').val(email);
+            });
+
+            $('#emailForm').submit(function (e) {
+                e.preventDefault(); // Prevent the default form submission
+
+                // Perform AJAX request to send the email
+                $.ajax({
+                    type: 'POST',
+                    url: '/send-email',
+                    data: $(this).serialize(),
+                    success: function (data) {
+                        // Close the modal
+                        $('#emailModal').modal('hide');
+
+                        // Show a success alert
+                        alert('Email has been sent successfully.');
+
+                        // You can also redirect to the dashboard if needed
+                         window.location.href = '/Views/Dashboard.ejs';
+
+                        // Clear the form fields
+                        $('#subject').val('');
+                        $('#message').val('');
+                    },
+                    error: function (error) {
+                        console.error(error);
+                        alert('Error sending email.');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
+
+
+
+
+
+
+
+

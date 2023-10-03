@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const nodemailer = require('nodemailer');
+const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const path = require('path');
 
@@ -40,7 +42,15 @@ app.use(express.static(__dirname));
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-// Define routes
+
+// Set up Nodemailer for sending emails
+const transporter = nodemailer.createTransport({
+  service: 'Gmail', // e.g., 'Gmail'
+  auth: {
+      user: 'cryptoproject43@gmail.com',
+      pass: 'fhch ekvk vfbt czcd',
+  },
+});
 
 // Display the HTML form
 app.get('/', (req, res) => {
@@ -96,6 +106,28 @@ app.post('/delete/:id', async (req, res) => {
     console.error('Error deleting query:', error);
     res.status(500).send('Error deleting query.');
   }
+});
+
+// Handle POST request to send emails
+app.post('/send-email', (req, res) => {
+  const { recipient, subject, message } = req.body;
+
+  const mailOptions = {
+      from: 'cryptoproject43@gmail.com',
+      to: recipient,
+      subject,
+      text: message,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          console.error(error);
+          res.status(500).send('Error sending email');
+      } else {
+          console.log('Email sent: ' + info.response);
+          res.redirect('/');
+      }
+  });
 });
 
 // Start the server
