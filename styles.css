@@ -150,6 +150,29 @@ footer {
     font-size: 1rem;
 }
 
+/* LOGO CONTAINER BOX */
+.logo-content {
+    width: 50%;
+    border-radius: 20px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .4);
+    margin: 5em auto;
+    display: flex;
+}
+
+.sub_logo {
+    max-width: 80px;
+}
+
+.company__info {
+    background-color: #343a40 !important;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+}
+
 /* LOGIN FORM CONTAINER BOX */
 .row>h2 {
     color: Black;
