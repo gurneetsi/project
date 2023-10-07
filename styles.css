@@ -1,4 +1,97 @@
+/* Reset some default styles */
+html, body, div, h1, h2, h3, p, span, img, a, ul, li, table, thead, tbody, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
 
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+header {
+    background-color: #333;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header .navbar-brand {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+header .navbar-toggler-icon {
+    background-color: #fff;
+}
+
+header .navbar-nav .nav-link {
+    font-size: 18px;
+    color: #fff;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+header .navbar-nav .nav-link:hover {
+    color: #f8f9fa;
+}
+
+header {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-nav li.nav-item a.nav-link:hover {
+    background-color: #555;
+    border-radius: 4px;
+}
+
+main {
+    padding: 20px 0;
+}
+
+section {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+h2.text-primary {
+    color: #007bff;
+}
+
+input.form-control {
+    border-radius: 4px;
+}
+
+button.btn-dark.btn-hover {
+    border-radius: 4px;
+    background-color: #000;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-dark.btn-hover:hover {
+    background-color: #333;
+}
+
+table {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 15px 0;
+    text-align: center;
+}
+
+/* Additional styles from the original code */
 .crypto-search {
     margin-bottom: 20px;
 }
@@ -18,7 +111,41 @@
     color: red;
     font-weight: bold;
 }
+
 .crypto-logo-small {
-    max-width: 100px; /* Adjust the maximum width as needed */
-    height: auto; /* Maintain aspect ratio */
+    max-width: 100px;
+    height: auto;
+}
+
+.logo {
+    max-width: 50px;
+    height: auto;
+}
+#crypto-search {
+    background-color: #f8f9fa; /* Light background color */
+    padding: 20px; /* Add some padding */
+    border-radius: 8px; /* Add rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+#search-button {
+    border-radius: 4px; /* Add rounded corners to the button */
+}
+
+
+/* Add hover effect to custom cards */
+.custom-card:hover {
+    transform: scale(1.05); /* Increase the size on hover */
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle box shadow on hover */
+}
+
+/* Style the card title and text */
+.custom-card .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.custom-card .card-text {
+    font-size: 1rem;
 }

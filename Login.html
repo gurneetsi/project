@@ -7,13 +7,17 @@
     <!-- Bootstrap CSS link -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="Login.css">
+    <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
     <header>
         <!-- Bootstrap Navigation Bar with Color -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-info">
-            <a class="navbar-brand text-white" href="#">Crypto Analyzer</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-info navbar bg-dark">
+            <a class="navbar-brand text-white" href="index.html"><img src="images/crypto.png" class="logo">Crypto
+                Analyzer</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -40,23 +44,25 @@
             </div>
         </nav>
     </header>
+    <main>
+    </header>
     <main class="d-flex align-items-center">
         <!-- Login Form -->
-        <section id="login-form" class="container mt-5">
+        <section id="login-form" class="container mt-2 bg-dark">
             <div class="row justify-content-center">
-                <div class="col-md-6">
-                    <h2 class="text-primary">Login</h2>
+                <div class="col-md-4">
+                    <h2 class="text-light">Login</h2>
                     <form id="login-form">
-                        <div class="form-group">
-                            <label for="user">User</label>
+                        <div class="form-group text-light" >
+                            <label for="user"><b>User</b></label>
                             <input type="text" class="form-control" id="user" placeholder="Enter your username" required>
                         </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
+                        <div class="form-group text-light">
+                            <label for="password"><b>Password</b></label>
                             <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-success">Submit</button>
                         </div>
                     </form>
                     <div id="error-message" class="text-danger"></div>
