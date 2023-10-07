@@ -52,7 +52,7 @@
                 <!-- Contact Form -->
                 <div class="col-md-6">
                     <h2 class="text-light">Contact Us</h2>
-                    <form id="contactForm" action="/submit" method="POST" onsubmit="return handleFormSubmission()">
+                    <form id="contactForm" action="/submit" method="POST">
                         <div class="form-group">
                             <label for="name" >Name</label>
                             <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name"
@@ -98,13 +98,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <script>
-        function handleFormSubmission() {
-            alert("Form submitted successfully!");
-            window.location.href = window.location.href; // Redirect to the same page
-            return false; // returning false to prevent the form submission
-        }
-    </script>
+ 
 </body>
 
 </html>

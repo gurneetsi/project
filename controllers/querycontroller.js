@@ -5,10 +5,10 @@ exports.submitQuery = async (req, res) => {
     const { name, email, phone, query } = req.body;
     const newQuery = new Query({ name, email, phone, query });
     await newQuery.save();
-    res.send('Query submitted successfully.');
+    res.status(200).json({ message: "Form submitted successfully!" });
   } catch (error) {
     console.error('Error submitting query:', error);
-    res.status(500).send('Error submitting query.');
+    res.status(500).json({ error: 'Error submitting query.' });
   }
 };
 
